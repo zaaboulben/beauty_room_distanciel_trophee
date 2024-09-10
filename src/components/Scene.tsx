@@ -16,6 +16,7 @@ import { div } from "three/webgpu";
 import Light from "./Light";
 import SimpleCamearaMouvement from "./SimpleCameraMouvement";
 import Model from "./Model";
+import { Perf } from "r3f-perf";
 
 export default function Scene() {
   function Loader() {
@@ -53,27 +54,6 @@ export default function Scene() {
   }
   const eyeHeight = 2.8;
 
-  // const points = useMemo(() => [
-  //   // new Vector3(2.295, eyeHeight, -10),
-  //   // new Vector3(2.295, eyeHeight-0.2, -5),
-  //   new Vector3(2.295, eyeHeight + 1, -4),
-  //   new Vector3(2.295, eyeHeight - 0.2, -3),
-  //   new Vector3(2.295, eyeHeight - 0.25, -1.7),
-  //   // new Vector3(2.295, eyeHeight - 0.3, -1.2)
-
-  // ], [eyeHeight]);
-
-  // const curve = useMemo(() => new CatmullRomCurve3(points, false, 'catmullrom', 0.5), [points]);
-
-  // const mirrorPoints = useMemo(() => {
-  //   return[
-  //   new Vector3(2.29, eyeHeight , 4),
-  //   new Vector3(2.29, eyeHeight , 3),
-  //   new Vector3(2.29, eyeHeight , .0),]
-  //   }, []);
-
-  // const mirrorCurve = useMemo(() => new CatmullRomCurve3(mirrorPoints, false, 'catmullrom', 0.5), [mirrorPoints]);
-
   return (
     <Canvas
       shadows
@@ -88,30 +68,8 @@ export default function Scene() {
         position: [2.295, eyeHeight + 1, -4]
       }}
     >
+      <Perf position={"top-left"} />
       <Suspense fallback={<Loader />}>
-        {/* <Environment
-
-
-          // files={[
-          //     "/beautyroomenvmapv2/px.png",
-          //     "/beautyroomenvmapv2/nx.png",
-          //     "/beautyroomenvmapv2/py.png",
-          //     "/beautyroomenvmapv2/ny.png",
-          //     "/beautyroomenvmapv2/pz.png",
-          //     "/beautyroomenvmapv2/nz.png",
-          //     ]} 
-          background={true}
-
-          path="/beautyroomenvmapv2/"
-          environmentIntensity={1}
-        // ground={{
-        //   height: 10,
-        //   radius: 30,
-        //   scale: 100
-        // }}
-        /> */}
-
-        {/* <Line points={curve.getPoints(100)} color="blue" /> */}
 
         <Model
           position={[0, 0, 0]}
@@ -123,7 +81,6 @@ export default function Scene() {
         <Light />
 
         <SimpleCamearaMouvement duration={4} eyeHeight={2.8} fov={75} />
-        {/* <OrbitControls/> */}
       </Suspense>
     </Canvas>
   );

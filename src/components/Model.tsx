@@ -97,12 +97,22 @@ const materials = {
         color: "#85521D",
         reflectivity: 0.1,
     }),
+    mirror: createMaterial({
+        color: 0xffffff,
+        metalness: 0.1,
+        roughness: 0.3,
+        clearcoat: 1,
+        clearcoatRoughness: 0,
+        reflectivity: 1,
+
+
+    }),
 };
 
 // Material mapping
 const materialMapping: { [key: string]: keyof typeof materials } = {
     table: 'whiteGlossy',
-    mirror: 'glass',
+    mirror: 'mirror',
     armoirAlu: 'alu',
     trashTop: 'blackGlossy',
     armoirBois: 'whiteGlossy',
@@ -118,6 +128,9 @@ const materialMapping: { [key: string]: keyof typeof materials } = {
     chevalet: 'chevalet',
     tableau: 'woodCadre',
     tableauscreen: 'whiteGlossy',
+    tableauWall:"whiteGlossy",
+    tableauWallBlack:"blackGlossy",
+
 };
 
 const Model: React.FC<ModelProps> = (props) => {
@@ -164,11 +177,11 @@ const Model: React.FC<ModelProps> = (props) => {
             case '2xl':
                 return { positionX: -0.15, htmlPosition: [-0.6, 2.9, 9], distanceFactor: 4.9 };
             case 'xl':
-                return {positionX: -0.15, htmlPosition: [-0.6, 2.85, 9], distanceFactor: 5.05 };
+                return { positionX: -0.15, htmlPosition: [-0.6, 2.85, 9], distanceFactor: 5.05 };
             case 'lg':
-                return {positionX: -0.15, htmlPosition: [.2, 2.8, 9], distanceFactor: 3.6 };
+                return { positionX: -0.15, htmlPosition: [.2, 2.8, 9], distanceFactor: 3.6 };
             case 'md':
-                return {positionX: -0.18, htmlPosition: [.05, 2.8, 9], distanceFactor: 3.15 };
+                return { positionX: -0.18, htmlPosition: [.05, 2.8, 9], distanceFactor: 3.15 };
             default: // 'sm'
                 return { positionX: -0.02, htmlPosition: [2.35, 2.7, 9.5], distanceFactor: 2.45 };
         }
@@ -191,7 +204,7 @@ const Model: React.FC<ModelProps> = (props) => {
 
             {visible && (
                 <Html
-                    wrapperClass="htmlScreen"
+                    wrapperClass="htmlScreen "
                     transform
                     distanceFactor={distanceFactor}
                     //@ts-ignore

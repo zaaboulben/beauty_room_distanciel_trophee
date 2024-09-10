@@ -81,7 +81,7 @@ const SimpleCameraMovement: React.FC<SimpleCameraMovement> = ({
     }
   }, [eyeHeight, breakpoint]);
 
-const lookAtTarget = useMemo(() => {
+  const lookAtTarget = useMemo(() => {
     switch (breakpoint) {
       case '2xl':
         return new Vector3(2.295, eyeHeight - 0.3, -1.2); // Ajusté pour correspondre à la nouvelle position finale
@@ -101,7 +101,7 @@ const lookAtTarget = useMemo(() => {
   const easeOutQuint = (x: number): number => 1 - Math.pow(1 - x, x * 3);
 
   useEffect(() => {
-                        //@ts-ignore
+    //@ts-ignore
 
     camera.fov = breakpoint === 'sm' ? fov + 5 : fov;
     camera.position.copy(curve.getPoint(0));
@@ -135,11 +135,11 @@ const lookAtTarget = useMemo(() => {
       blurRef.current.lookAt(camera.position);
 
       const distance = camera.position.distanceTo(mirrorPosition);
-                          //@ts-ignore
+      //@ts-ignore
 
       const vFov = camera.fov * Math.PI / 180;
       const height = 2 * Math.tan(vFov / 2) * distance * 1.5;
-                          //@ts-ignore
+      //@ts-ignore
 
       const width = height * camera.aspect * 1.5;
       blurRef.current.scale.set(width, height, 1);

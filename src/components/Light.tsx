@@ -17,23 +17,13 @@ export default function Light() {
 
         />
 
-        {/* <pointLight
+        <pointLight
             //ref={pointLight} 
-            position={[3, 5.7, 2]} intensity={10}
+            position={[3, 5.7, 2]} intensity={12}
             shadow-mapSize={[4096, 4096]}
 
-        /> */}
-        {/* <Lightformer
-    color={"#ff00ff"}
-    scale={1}
-    form={"ring"}
-    position={[1.8, 4.3, 1.78]}
-    intensity={2}
-    visible={true}
-    lookAt={[0, 5, 7]}
-
-
-/> */}
+        />
+       
     </>
     )
 }
